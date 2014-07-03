@@ -1,0 +1,5 @@
+Dim str As String
+
+Dim variable1 As String
+Dim iFileNo As Integer
+Dim sNextLine As String
