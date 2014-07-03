@@ -1,0 +1,26 @@
+Private Sub Command3_Click()
+Dim strInputString As String
+Dim astrSplitItems() As String
+
+Dim intC As Integer
+
+strInputString = Text1.Text
+
+astrSplitItems = Split(strInputString, " ")
+
+'For intX = 0 To UBound(astrSplitItems)
+'
+'List1.AddItem astrSplitItems(intX)
+'For intX = 0 To UBound(astrSplitItems) Step 1
+'If astrSplitItems(intX) <> "" Then
+'astrFinItems(intC) = astrSplitItems(intX)
+''List1.AddItem astrFinItems(count)
+'intC = intC + 1
+'End If
+'Next intX
+
+For intC = 0 To UBound(astrSplitItems)
+List1.AddItem astrSplitItems(intC)
+Next intC
+
+End Sub
