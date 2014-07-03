@@ -1,0 +1,9 @@
+Private Sub Command9_Click()
+CommonDialog1.Filter = "Apps (*.txt)|*.txt|All files (*.*)|*.*"
+CommonDialog1.DefaultExt = "txt"
+CommonDialog1.DialogTitle = "Select File"
+CommonDialog1.ShowOpen
+
+'The FileName property gives you the variable you need to use
+Text2.Text = (CommonDialog1.FileName)
+End Sub
