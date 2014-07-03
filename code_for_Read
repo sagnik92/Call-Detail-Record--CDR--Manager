@@ -1,0 +1,22 @@
+Private Sub Command1_Click()
+str = Text2.Text
+iFileNo = FreeFile
+If str = "" Then
+MsgBox ("File not selected.Please select a Text file")
+End If
+If str <> "" And Right$(str, 3) <> "txt" Then
+MsgBox ("Error!Wrong File selected.Please select a Text File")
+Text2.Text = ""
+End If
+If Right$(str, 3) = "txt" Then
+Open CommonDialog1.FileName For Input As #iFileNo
+Do While Not EOF(iFileNo)
+Input #iFileNo, sNextLine
+sNextLine = sNextLine & vbCrLf
+variable1 = variable1 & " " & sNextLine
+Loop
+Text1.Text = variable1
+Command3.Enabled = True
+End If
+Close #iFileNo
+End Sub
