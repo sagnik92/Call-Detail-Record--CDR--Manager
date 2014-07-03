@@ -1,0 +1,106 @@
+Private Sub Command5_Click()
+iFileNo = FreeFile
+str = Text2.Text
+If str = "" Then
+MsgBox ("File not selected.Please select a Text file")
+End If
+If str <> "" And Right$(str, 3) <> "txt" Then
+MsgBox ("Error!Wrong File selected.Please select a Text File")
+Text2.Text = ""
+End If
+If Right$(str, 3) = "txt" Then
+Dim oXLApp As New Excel.Application
+Dim oXLSheet As Excel.Worksheet
+Dim oXLBook As Excel.Workbook
+Set oXLApp = New Excel.Application
+Set oXLBook = oXLApp.Workbooks.Add
+Set oXLSheet = oXLBook.Worksheets(1)
+Dim strInputString As String
+Dim k As Integer
+
+Dim astrSplitItems() As String
+
+Dim intX, intR As Integer
+Dim intY, intS, intT As Integer
+Dim intZ As Integer
+
+'strInputString = Text1.Text
+'
+'astrSplitItems = Split(strInputString, " ")
+'k = 880
+'intZ = 0
+'Do While intZ < k
+'For intY = 1 To k / 44 Step 1
+'For intX = 1 To 44 Step 2
+'oXLSheet.Cells(intY, intX).Value = astrSplitItems(intZ)
+'intZ = intZ + 1
+'Next intX
+'Next intY
+'Loop
+
+Open CommonDialog1.FileName For Input As #iFileNo
+intZ = 0
+intX = 1
+intY = 1
+
+
+Do While Not EOF(iFileNo)
+Input #iFileNo, sNextLine
+astrSplitItems = Split(sNextLine, " ")
+
+
+
+
+'For intR = 0 To UBound(astrSplitItems) Step 1
+'If astrSplitItems(intR) <> "" Then
+'oXLSheet.Cells(intY, intX).Value = astrSplitItems(intR)
+'intX = intX + 1
+'End If
+'For i = 0 To UBound(astrSplitItems)
+'Print astrSplitItems(intR)
+'If (Len(Trim(astrSplitItems(intR))) = 6 And Mid(astrSplitItems(intR), 1, 2) = "80") Then
+'intY = intY + 1
+'intX = 1
+'Else
+'
+'End If
+'Next intR
+
+For intR = 0 To UBound(astrSplitItems) Step 1
+'For intX = 1 To 87
+
+If astrSplitItems(intR) <> "" Then
+oXLSheet.Cells(intY, intX).Value = astrSplitItems(intR)
+
+intX = intX + 1
+
+End If
+'intZ = intZ + 1
+'oXLSheet.Cells(intY, intX).Value = astrSplitItems(intZ)
+'intZ = intZ + 1
+If (Len(Trim(astrSplitItems(intR))) = 6 And Mid(astrSplitItems(intR), 1, 2) = "80") Then
+intY = intY + 1
+
+intX = 1
+
+Else
+
+End If
+'Next intX
+Next intR
+Loop
+
+oXLApp.Visible = True
+
+Set oXLSheet = Nothing
+
+oXLBook.Close SaveChanges:=True
+MsgBox ("File saved in Excel format ^_^")
+   
+Set oXLBook = Nothing
+   
+oXLApp.Quit
+   
+Set oXLApp = Nothing
+End If
+End Sub
