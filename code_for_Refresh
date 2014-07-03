@@ -1,0 +1,5 @@
+Private Sub Command4_Click()
+Text1.Text = " "
+Text2.Text = " "
+List1.Clear
+End Sub
