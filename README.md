@@ -1,7 +1,7 @@
 Call-Detail-Record--CDR--Manager
 ================================
 
-This is a VB 6.0 application which I developed during a summer training at OnProcess Technology Pvt. Ltd.;It manages a Call Detail Record file.
+This is a VB 6.0 application which I developed during an internship at OnProcess Technology Pvt. Ltd.;It manages a Call Detail Record file.
 
 It takes a CDR which is a text file, SPL_Output_24052012.txt in this case. The Call Detail Record (CDR) contains details of all Inbound and Outbound calls of a call center within a time duration (for eg. in a day).
 
